@@ -1,23 +1,43 @@
+---
+import "../styles/global.css";
+import "@fontsource/inter";
+import "@fontsource/ibm-plex-mono";
+import "@fontsource-variable/space-grotesk";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Facundo Pellicer</title>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+
+  <body class="bg-[rgb(15,15,15)] text-white relative">
+    <!-- <div class="absolute w-full h-full top-0 left-0 overflow-hidden">
+      <div class="noise"></div>
+    </div> -->
+
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  .noise {
+    position: absolute;
+    background: url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png");
+    opacity: 0.03;
+    inset: -200%;
+    width: 400%;
+    height: 400%;
+    filter: contrast(100);
+  }
 </style>

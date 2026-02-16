@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  /* Overwrite the default 'sans' font */
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-display: "Space Grotesk Variable", sans-serif;
+
+  --color-white: #f7f7f7;
+}
