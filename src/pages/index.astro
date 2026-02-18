@@ -1,18 +1,34 @@
 ---
 import Image from "astro/components/Image.astro";
-import Faunakite from "../assets/images/faunakite.webp";
-import GuanacoRental from "../assets/images/guanaco-rental.webp";
-import BoletinOficial from "../assets/images/boletin-oficial.png";
+import Faunakite1 from "../assets/images/faunakite-1.webp";
+import Faunakite2 from "../assets/images/faunakite-2.png";
+import Faunakite3 from "../assets/images/faunakite-3.png";
+import GuanacoRental1 from "../assets/images/guanacorental-1.png";
+import GuanacoRental2 from "../assets/images/guanacorental-2.png";
+import GuanacoRental3 from "../assets/images/guanacorental-3.png";
+import BoletinOficial1 from "../assets/images/boletinoficial-1.png";
+import BoletinOficial2 from "../assets/images/boletinoficial-2.png";
+import BoletinOficial3 from "../assets/images/boletinoficial-3.png";
 import Layout from "../layouts/Layout.astro";
 import Link from "../components/Link.astro";
 import { Icon } from "astro-icon/components";
 
 const projects = [
   {
-    image: {
-      src: Faunakite,
-      alt: "Fauna Kite home page",
-    },
+    images: [
+      {
+        src: Faunakite1,
+        alt: "Fauna Kite home page",
+      },
+      {
+        src: Faunakite2,
+        alt: "Fauna Kite home page",
+      },
+      {
+        src: Faunakite3,
+        alt: "Fauna Kite home page",
+      },
+    ],
     title: "Fauna Kite",
     subtitle: "Kitesurf school app",
     description: [
@@ -30,16 +46,26 @@ const projects = [
     ],
   },
   {
-    image: {
-      src: GuanacoRental,
-      alt: "Guanaco Rental home page",
-    },
+    images: [
+      {
+        src: GuanacoRental1,
+        alt: "Guanaco Rental home page",
+      },
+      {
+        src: GuanacoRental2,
+        alt: "Guanaco Rental home page",
+      },
+      {
+        src: GuanacoRental3,
+        alt: "Guanaco Rental home page",
+      },
+    ],
     title: "Guanaco Rental",
     subtitle: "Rental app",
     description: [
-      "Guanaco Rental, an audiovisual equipment business, was bogged down by manual processes: equipment lists shared via Google Sheets, bookings tracked in a makeshift sheet-based calendar, and reservations handled through scattered WhatsApp messages. This led to errors, delays, and no real-time visibility—admins couldn't quickly check availability, and clients had to wait for shared spreadsheets, making the whole operation inefficient and error-prone as the business grew.",
-      "To digitize without overcomplicating, I built a single full-stack Next.js app with a customer-facing side for e-commerce-style browsing and real-time availability-based bookings—eliminating spreadsheet sharing—and an admin dashboard for centralized equipment management, including custom features like earnings splits based on ownership in their rental society, stock tracking, and availability. Why Next.js? It enabled seamless server-side rendering and API routes for both sides in one codebase, keeping development efficient. Additional admin tools included a proper calendar for orders, discounts, analytics, employee roles with permissions, and customer data insights. To handle legal requirements, I automated paperwork generation during bookings. The app was deployed on a VPS near Argentina to minimize latency for local users—balancing cost with performance in a region with variable internet.",
-      "The platform transformed their operations, automating bookings, paperwork, and analytics—saving hours of manual work so they could focus on growth. Admins now easily track equipment status, customer reliability, and monthly performance, leading to better decisions. It even scaled seamlessly when they expanded to a new province, handling the added location without any system changes, proving the design's flexibility turned a fragmented mess into a scalable business engine.",
+      "Guanaco Rental, an audiovisual equipment business, was bogged down by manual processes: equipment lists shared via Google Sheets, bookings tracked in a makeshift sheet-based calendar, and reservations handled through scattered WhatsApp messages. This led to errors, delays, and no realtime visibility, admins couldn't quickly check availability, and clients had to wait for shared spreadsheets, making the whole operation inefficient and error-prone as the business grew.",
+      "I designed and built prioritizing tools that maximized efficiency for one-person development while addressing the relational nature of the data equipment tied to owners, bookings, locations, and more. Next.js handled the full stack, with tRPC for typesafe API calls, streamlining development UX. PostgreSQL for its robust handling of relationships and queries, like checking daterange overlaps for realtime availability to prevent booking conflicts. Key trade-offs focused on cost and simplicity: Opting for a VPS deployment kept latency low and costs predictable far cheaper than cloud options with variable pricing while colocating the DB and server on the same machine ensured it could handle all traffic without scaling concerns.",
+      "The platform transformed their operations, automating bookings, paperwork, and analytics saving hours of manual work so they could focus on growth. Admins now easily track equipment status, customer reliability, and monthly performance, leading to better decisions. It even scaled seamlessly when they expanded to a new province, handling the added location without any system changes, proving the design's flexibility turned a fragmented mess into a scalable business engine.",
     ],
     stack: [
       "Typescript",
@@ -52,18 +78,28 @@ const projects = [
     ],
   },
   {
-    image: {
-      src: BoletinOficial,
-      alt: "Boletin Oficial home page",
-    },
-    title: "Boletin Oficial AI",
+    images: [
+      {
+        src: BoletinOficial1,
+        alt: "Boletin Oficial home page",
+      },
+      {
+        src: BoletinOficial2,
+        alt: "Boletin Oficial home page",
+      },
+      {
+        src: BoletinOficial3,
+        alt: "Boletin Oficial home page",
+      },
+    ],
+    title: "Boletin Oficial",
     subtitle: "Civic tech",
     description: [
       "In Argentina, the Boletín Oficial—a daily government gazette—publishes all national changes, from laws to administrative updates, amid rapid shifts under recent presidencies. Lawyers I spoke with relied on it to stay informed, but it's a dense, lengthy document filled with boilerplate like job postings that most people ignore. Citizens miss key insights buried in the jargon, lacking an easy way to access relevant updates without sifting through pages of irrelevant details.",
       "To make this accessible, I used Python's seamless PDF libraries to ingest the daily documents, then leveraged Gemini's 1M context window for AI analysis—extracting and categorizing key news into JSON format without bias. Why Gemini? Its large context handled full documents efficiently, focusing on relevance for everyday users rather than legal experts. The output feeds an Astro app for fast rendering, with a React-based AI chat embedding the day's paper in context for on-demand clarifications. This stack balanced automation (AI extraction) with interactivity (chat), keeping development lean while prioritizing neutrality and usability over opinionated content.",
       "The app delivers categorized, digestible summaries of government changes—like a neutral newspaper—empowering Argentinians to stay informed without the overwhelm. It saves time, fosters civic awareness, and highlights important shifts objectively, turning a bureaucratic resource into a public tool that's expanded users' understanding of national developments.",
     ],
-    stack: ["Python", "OpenAI", "Gemini", "Astro", "React"],
+    stack: ["Python", "FastAPI", "OpenAI", "Gemini", "Astro", "React"],
   },
 ];
 
@@ -88,18 +124,18 @@ const experience = [
 
 <Layout>
   <main class="font-sans">
-    <section class="h-dvh px-4 lg:px-10 space-y-14 grid place-content-center">
-      <div class="max-w-7xl font-display">
-        <h1 class="font-bold text-5xl md:text-9xl uppercase">
+    <section class="grid h-dvh place-content-center space-y-14 px-4 lg:px-10">
+      <div class="font-display max-w-7xl">
+        <h1 class="text-5xl font-bold uppercase lg:text-9xl">
           Building pragmatic web solutions
           <span class="text-blue-500">.</span>
         </h1>
       </div>
 
       <div
-        class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-y-6"
+        class="flex flex-col gap-y-6 lg:flex-row lg:items-baseline lg:justify-between"
       >
-        <div class="text-lg md:text-2xl text-neutral-400 max-w-2xl">
+        <div class="max-w-2xl text-lg text-neutral-400 lg:text-2xl">
           <p>Facundo Pellicer - Full Stack Developer.</p>
           <p>
             Building scalable systems where code solves real business problems.
@@ -108,21 +144,21 @@ const experience = [
 
         <div class="flex items-center gap-10 font-mono">
           <div class="space-y-1">
-            <p class="text-xs md:text-sm text-neutral-500">FOCUS</p>
-            <p class="text-sm md:text-base">Full Stack / AI</p>
+            <p class="text-xs text-neutral-500 lg:text-sm">FOCUS</p>
+            <p class="text-sm lg:text-base">Full Stack / AI</p>
           </div>
 
           <div class="space-y-1">
-            <p class="text-xs md:text-sm text-neutral-500">LOCATION</p>
-            <p class="text-sm md:text-base">Remote / Global</p>
+            <p class="text-xs text-neutral-500 lg:text-sm">LOCATION</p>
+            <p class="text-sm lg:text-base">Remote / Global</p>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="py-30 md:py-40 bg-neutral-900 flex justify-center">
+    <div class="flex justify-center bg-neutral-900 py-30 lg:py-40">
       <p
-        class="text-xl text-center md:text-left px-8 md:px-0 md:text-4xl font-display max-w-5xl mx-auto text-balance"
+        class="font-display mx-auto max-w-5xl px-4 text-center text-xl text-balance lg:px-0 lg:text-left lg:text-4xl"
       >
         My job isn't just to write code; it's to understand the underlying
         problem while keeping the big picture in mind.
@@ -130,111 +166,118 @@ const experience = [
     </div>
 
     <section
-      class="px-4 lg:px-10 space-y-40 md:space-y-60 py-30 md:py-40 mx-auto max-w-350"
+      class="mx-auto max-w-375 space-y-30 px-4 py-30 lg:space-y-60 lg:px-10 lg:py-40"
     >
       {
         projects.map((project, index) => (
           <article
             x-data="{ activeTab: 0 }"
-            class="flex flex-col gap-x-20 md:flex-row md:even:flex-row-reverse items-center"
+            class="flex flex-col items-center gap-x-20 lg:flex-row lg:even:flex-row-reverse"
           >
-            <div class="flex-1 space-y-10">
-              <div class="flex  items-center gap-4">
+            <div class="basis-[40%] space-y-10">
+              <div class="flex items-center gap-4">
                 <div>
-                  <p class="text-blue-400 font-bold text-5xl md:text-7xl font-mono">
+                  <p class="font-mono text-5xl font-bold text-blue-400 lg:text-7xl">
                     0{index + 1}
                   </p>
                 </div>
                 <div>
-                  <p class="font-bold text-4xl md:text-5xl uppercase font-display">
+                  <p class="font-display text-4xl font-bold uppercase lg:text-5xl">
                     {project.title}
                   </p>
-                  <p class="text-xl md:text-2xl text-neutral-400">
+                  <p class="text-xl text-neutral-400 lg:text-2xl">
                     {project.subtitle}
                   </p>
                 </div>
               </div>
 
-              <div class="relative z-20 flex-1 md:hidden block">
-                <Image
-                  src={project.image.src}
-                  alt={project.image.alt}
-                  width="600"
-                  height="400"
-                  class="w-full h-full object-cover rounded-md"
-                />
+              <div class="relative z-20 mb-10 grid w-full lg:hidden">
+                {project.images.map((img, imgIndex) => (
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width="1200"
+                    height="800"
+                    class="h-auto w-full rounded-md object-cover transition-opacity duration-300 [grid-area:1/1]"
+                    x-bind:class={`activeTab === ${imgIndex} ? 'opacity-100' : 'opacity-0 pointer-events-none'`}
+                  />
+                ))}
               </div>
 
-            <div class="space-y-4">
-          <div class="flex items-center gap-4 pb-4">
-            <button
-              @click="activeTab = 0"
-              type="button"
-              class="flex items-center gap-2 rounded-lg uppercase font-semibold text-sm px-4 py-2 border border-blue-300 transition-colors"
-              :class="activeTab === 0 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
-            >
-              <Icon name="circle-alert" class="size-6" />
-              The Problem
-            </button>
-            <button
-              @click="activeTab = 1"
-              type="button"
-              class="flex items-center gap-2 rounded-lg uppercase font-semibold text-sm px-4 py-2 border border-blue-300 transition-colors"
-              :class="activeTab === 1 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
-            >
-              <Icon name="lightbulb" class="size-6" />
-              The Solution
-            </button>
-            <button
-              @click="activeTab = 2"
-              type="button"
-              class="flex items-center gap-2 rounded-lg uppercase font-semibold text-sm px-4 py-2 border border-blue-300 transition-colors"
-              :class="activeTab === 2 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
-            >
-              <Icon name="trending-up" class="size-6" />
-              The Impact
-            </button>
-          </div>
+              <div class="space-y-4">
+                <div class="flex flex-col items-center gap-x-4 gap-y-2 pb-4 lg:flex-row">
+                  <button
+                    x-on:click="activeTab = 0"
+                    type="button"
+                    class="flex w-full items-center justify-center gap-2 rounded-lg border border-blue-300 p-2 text-xs font-semibold uppercase transition-colors lg:text-sm"
+                    x-bind:class="activeTab === 0 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
+                  >
+                    <Icon
+                      name="circle-alert"
+                      class="size-6"
+                    />
+                    The Problem
+                  </button>
+                  <button
+                    x-on:click="activeTab = 1"
+                    type="button"
+                    class="flex w-full items-center justify-center gap-2 rounded-lg border border-blue-300 p-2 text-xs font-semibold uppercase transition-colors lg:text-sm"
+                    x-bind:class="activeTab === 1 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
+                  >
+                    <Icon
+                      name="lightbulb"
+                      class="size-6"
+                    />
+                    The Solution
+                  </button>
+                  <button
+                    x-on:click="activeTab = 2"
+                    type="button"
+                    class="flex w-full items-center justify-center gap-2 rounded-lg border border-blue-300 p-2 text-xs font-semibold uppercase transition-colors lg:text-sm"
+                    x-bind:class="activeTab === 2 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
+                  >
+                    <Icon
+                      name="trending-up"
+                      class="size-6"
+                    />
+                    The Impact
+                  </button>
+                </div>
 
-          {/* 
-            THE FIX:
-            1. We use standard class for static styles.
-            2. We use :class for the dynamic logic.
-            3. We inject the Astro variable ${pIndex} directly into the string.
-          */}
-          <div class="grid">
-            {project.description.map((p, pIndex) => (
-              <p
-                class="text-lg text-pretty [grid-area:1/1] transition-opacity duration-300"
-                :class={`activeTab === ${pIndex} ? 'opacity-100' : 'opacity-0 pointer-events-none'`}
-              >
-                {p}
-              </p>
-            ))}
-          </div>
-        </div>
+                <div class="grid">
+                  {project.description.map((p, pIndex) => (
+                    <p
+                      class="text-lg text-pretty transition-opacity duration-300 [grid-area:1/1]"
+                      x-bind:class={`activeTab === ${pIndex} ? 'opacity-100' : 'opacity-0 pointer-events-none'`}
+                    >
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-        <div>
-                <ul class="flex items-center flex-wrap gap-2 md:gap-4">
+            <div class="relative z-20 hidden basis-[60%] lg:grid">
+              {project.images.map((img, imgIndex) => (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width="1600"
+                  height="1000"
+                  class="h-auto w-full rounded-md object-cover transition-opacity duration-300 [grid-area:1/1]"
+                  x-bind:class={`activeTab === ${imgIndex} ? 'opacity-100' : 'opacity-0 pointer-events-none'`}
+                />
+              ))}
+
+              {/* <div class="pt-6">
+                <ul class="flex flex-wrap items-center gap-2 lg:gap-4">
                   {project.stack.map((tech) => (
-                    <li class="px-4 py-1 bg-neutral-600 rounded-3xl uppercase text-xs">
+                    <li class="rounded-3xl bg-neutral-600 px-4 py-1 text-xs uppercase">
                       {tech}
                     </li>
                   ))}
                 </ul>
-              </div>
-
-            </div>
-
-
-            <div class="relative z-20 flex-1 hidden md:block">
-              <Image
-                src={project.image.src}
-                alt={project.image.alt}
-                width="800"
-                height="800"
-                class="w-200 h-125 object-cover rounded-md"
-              />
+              </div> */}
             </div>
           </article>
         ))
@@ -242,18 +285,18 @@ const experience = [
     </section>
 
     <section
-      class="px-4 lg:px-10 mx-auto max-w-7xl py-30 md:py-40 grid md:grid-cols-2 gap-y-20 justify-between items-center"
+      class="mx-auto grid max-w-7xl items-center justify-between gap-y-30 px-4 py-30 lg:grid-cols-2 lg:px-10 lg:py-40"
     >
       <div class="space-y-14">
         {
           experience.map((exp) => (
             <div class="space-y-3 border-l border-neutral-700 pl-10">
-              <p class=" text-neutral-500 font-thin text-sm md:text-base">
+              <p class="text-sm font-thin text-neutral-500 lg:text-base">
                 {exp.date}
               </p>
               <div class="space-y-1">
-                <p class="text-xl md:text-2xl font-bold">{exp.title}</p>
-                <p class="text-base md:text-lg text-neutral-400">
+                <p class="text-xl font-bold lg:text-2xl">{exp.title}</p>
+                <p class="text-base text-neutral-400 lg:text-lg">
                   {exp.subtitle}
                 </p>
               </div>
@@ -262,44 +305,47 @@ const experience = [
         }
       </div>
       <div>
-        <p class="text-3xl md:text-4xl leading-9 md:leading-11 text-pretty">
+        <p class="text-2xl leading-8 text-pretty lg:text-4xl lg:leading-11">
           I am driven by a <span class="text-blue-400">passion</span> for constant
           growth and <span class="text-blue-400">learning</span>. My background
           in sports instilled a <span class="text-blue-400">competitive</span> spirit
           that pushes me to improve every day. I also have a sharp eye for <span
-            class="text-blue-400">details</span
-          >. I believe sometimes the distinction between a good product and a
-          great one often relies on the small things.
+            class="text-blue-400"
+          >
+            details
+          </span>. I believe sometimes the distinction between a good product
+          and a great one often relies on the small things.
         </p>
         <p></p>
       </div>
     </section>
 
-    <section class="px-4 lg:px-10 py-30 md:py-40 space-y-20">
+    <section class="space-y-14 px-4 py-30 lg:space-y-20 lg:px-10 lg:py-40">
       <div class="flex justify-center">
-        <p class="text-base md:text-xl text-neutral-400 tracking-widest">
+        <p class="text-sm tracking-widest text-neutral-400 lg:text-xl">
           GET IN TOUCH
         </p>
       </div>
 
       <div
-        class="flex justify-center text-xl md:text-6xl font-bold underline underline-offset-8"
+        class="flex justify-center text-xl font-bold underline underline-offset-8 lg:text-6xl"
       >
-        <Link class="relative z-20" href="mailto:facundopellicer4@gmail.com">
+        <Link
+          class="relative z-20"
+          href="mailto:facundopellicer4@gmail.com"
+        >
           facundopellicer4@gmail.com
         </Link>
       </div>
 
       <div
-        class="pt-8 flex justify-center gap-14 items-center text-lg md:text-2xl"
+        class="flex items-center justify-center gap-14 pt-8 text-base lg:text-2xl"
       >
         <Link href="https://www.linkedin.com/in/facundopellicer/">
           LINKEDIN
         </Link>
-        <Link href="https://www.linkedin.com/in/facundopellicer/">
-          GITHUB
-        </Link>
-        <Link href="https://www.linkedin.com/in/facundopellicer/"> X </Link>
+        <Link href="https://github.com/Facupelli"> GITHUB </Link>
+        <Link href="https://x.com/Pelliscame"> X </Link>
       </div>
     </section>
   </main>
