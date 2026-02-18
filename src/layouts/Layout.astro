@@ -9,22 +9,36 @@ import "@fontsource-variable/space-grotesk";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
     <title>Facundo Pellicer</title>
 
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
-    ></script>
+    >
+    </script>
   </head>
 
-  <body class="bg-[rgb(15,15,15)] text-white relative">
-    <!-- <div class="absolute w-full h-full top-0 left-0 overflow-hidden">
+  <body class="relative bg-[rgb(15,15,15)] text-white">
+    <div class="absolute top-0 left-0 h-full w-full overflow-hidden">
       <div class="noise"></div>
-    </div> -->
+    </div>
 
     <slot />
   </body>
