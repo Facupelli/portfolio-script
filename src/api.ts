@@ -14,37 +14,6 @@ export const api = {
       {
         images: [
           {
-            src: Faunakite1,
-            alt: "Fauna Kite home page",
-          },
-          {
-            src: Faunakite2,
-            alt: "Fauna Kite home page",
-          },
-          {
-            src: Faunakite3,
-            alt: "Fauna Kite home page",
-          },
-        ],
-        title: "Fauna Kite",
-        subtitle: "Kitesurf school app",
-        description: [
-          "Fauna Kite, a new kitesurf school with a tight budget, needed an online site to showcase services and enable student bookings for courses and classes. They were manually tracking info in Google Sheets via emails and calls, with no easy way to update content, events like kitecamps, or newsletters—creating inefficiency for a growing business.",
-          "To keep costs low, I minimized development by using their existing Google Sheets as a free 'database' for bookings, automating data storage, email notifications (via free Nodemailer), QR code perks, and calendar events. For content like news and events, I chose Sanity CMS's free tier for its ready dashboard—avoiding custom CRUD builds, integrations with Sheets, or paid DBs, which cut workload and expenses while maintaining performance. Built with Astro for speed, deployed on Cloudflare's free tier.",
-          "The site automated bookings and admin tasks, freeing the school to focus on teaching. It boosted visibility, engagement, and scalability without ongoing costs—designed with modularity so transitioning from Sheets to a real database would be straightforward as they grow. This turned constraints into a lean, effective solution that supports their expansion.",
-        ],
-        stack: [
-          "Typescript",
-          "Astro",
-          "Google Sheets API",
-          "Google Calendar API",
-          "Gmail API",
-          "React",
-        ],
-      },
-      {
-        images: [
-          {
             src: GuanacoRental1,
             alt: "Guanaco Rental home page",
           },
@@ -60,9 +29,9 @@ export const api = {
         title: "Guanaco Rental",
         subtitle: "Rental app",
         description: [
-          "Guanaco Rental, an audiovisual equipment business, was bogged down by manual processes: equipment lists shared via Google Sheets, bookings tracked in a makeshift sheet-based calendar, and reservations handled through scattered WhatsApp messages. This led to errors, delays, and no realtime visibility, admins couldn't quickly check availability, and clients had to wait for shared spreadsheets, making the whole operation inefficient and error-prone as the business grew.",
-          "I designed and built prioritizing tools that maximized efficiency for one-person development while addressing the relational nature of the data equipment tied to owners, bookings, locations, and more. Next.js handled the full stack, with tRPC for typesafe API calls, streamlining development UX. PostgreSQL for its robust handling of relationships and queries, like checking daterange overlaps for realtime availability to prevent booking conflicts. Key trade-offs focused on cost and simplicity: Opting for a VPS deployment kept latency low and costs predictable far cheaper than cloud options with variable pricing while colocating the DB and server on the same machine ensured it could handle all traffic without scaling concerns.",
-          "The platform transformed their operations, automating bookings, paperwork, and analytics saving hours of manual work so they could focus on growth. Admins now easily track equipment status, customer reliability, and monthly performance, leading to better decisions. It even scaled seamlessly when they expanded to a new province, handling the added location without any system changes, proving the design's flexibility turned a fragmented mess into a scalable business engine.",
+          "Guanaco Rental managed audiovisual equipment through Google Sheets, WhatsApp messages, and a manual booking calendar. As the business grew, checking availability, avoiding booking conflicts, and tracking equipment status became slow and error-prone.",
+          "I designed and built a full rental management system with Next.js, tRPC, Prisma, and PostgreSQL. The data model handled equipment, owners, bookings, customers, locations, and date-range availability checks to prevent reservation conflicts in real time. I deployed it on a VPS to keep infrastructure simple, predictable, and cost-effective.",
+          "The platform replaced fragmented manual workflows with a centralized system for reservations, equipment status, customer history, paperwork, and analytics. It later supported expansion to a new province without requiring structural changes to the system.",
         ],
         stack: [
           "Typescript",
@@ -72,6 +41,37 @@ export const api = {
           "tRPC",
           "Tailwind",
           "Shadcn/ui",
+        ],
+      },
+      {
+        images: [
+          {
+            src: Faunakite1,
+            alt: "Fauna Kite home page",
+          },
+          {
+            src: Faunakite2,
+            alt: "Fauna Kite home page",
+          },
+          {
+            src: Faunakite3,
+            alt: "Fauna Kite home page",
+          },
+        ],
+        title: "Fauna Kite",
+        subtitle: "Kitesurf school app",
+        description: [
+          "Fauna Kite needed a low-cost website to present its kitesurf courses, manage bookings, and publish events, while the team was still relying on Google Sheets, emails, and calls for day-to-day operations.",
+          "I built a fast Astro site and reused their existing Google Sheets workflow as a lightweight booking backend. I added automated email notifications, calendar events, QR code perks, and Sanity CMS so the team could update news and kitecamp content without a custom admin panel.",
+          "The project automated bookings and content updates without adding paid infrastructure or operational complexity. It gave the school a scalable foundation while keeping the system simple enough to evolve into a real database later.",
+        ],
+        stack: [
+          "Typescript",
+          "Astro",
+          "Google Sheets API",
+          "Google Calendar API",
+          "Gmail API",
+          "React",
         ],
       },
       {
@@ -92,9 +92,9 @@ export const api = {
         title: "Boletin Oficial",
         subtitle: "Civic tech",
         description: [
-          "In Argentina, the Boletín Oficial—a daily government gazette—publishes all national changes, from laws to administrative updates, amid rapid shifts under recent presidencies. Lawyers I spoke with relied on it to stay informed, but it's a dense, lengthy document filled with boilerplate like job postings that most people ignore. Citizens miss key insights buried in the jargon, lacking an easy way to access relevant updates without sifting through pages of irrelevant details.",
-          "To make this accessible, I used Python's seamless PDF libraries to ingest the daily documents, then leveraged Gemini's 1M context window for AI analysis—extracting and categorizing key news into JSON format without bias. Why Gemini? Its large context handled full documents efficiently, focusing on relevance for everyday users rather than legal experts. The output feeds an Astro app for fast rendering, with a React-based AI chat embedding the day's paper in context for on-demand clarifications. This stack balanced automation (AI extraction) with interactivity (chat), keeping development lean while prioritizing neutrality and usability over opinionated content.",
-          "The app delivers categorized, digestible summaries of government changes—like a neutral newspaper—empowering Argentinians to stay informed without the overwhelm. It saves time, fosters civic awareness, and highlights important shifts objectively, turning a bureaucratic resource into a public tool that's expanded users' understanding of national developments.",
+          "Argentina’s Boletín Oficial publishes important government updates every day, but the documents are dense, repetitive, and difficult to scan. Relevant changes often get buried among administrative content.",
+          "I built a pipeline that ingests the daily PDFs, extracts relevant information with Python, and uses large-context AI models to categorize the updates into structured JSON. The results are published in a fast Astro app with a React chat interface for asking questions about the day’s document.",
+          "The app turns a difficult government source into readable summaries and searchable context, helping users understand relevant public updates without manually reading the full document.",
         ],
         stack: ["Python", "FastAPI", "OpenAI", "Gemini", "Astro", "React"],
       },
