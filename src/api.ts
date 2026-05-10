@@ -104,18 +104,21 @@ export const api = {
     return [
       {
         date: "July 2023 - Present",
-        title: "Full Stack Developer",
-        subtitle: "Strategic Architect for high-growth startups",
+        title: "Full Stack Developer / Team Lead",
+        subtitle:
+          "Building AI-powered SaaS products and conversational automation systems",
       },
       {
         date: "April 2023 - September 2023",
-        title: "Wordpress Developer",
-        subtitle: "Strategic Architect for high-growth startups",
+        title: "WordPress Developer",
+        subtitle:
+          "Improving UI, stability, and maintenance for a marketplace platform",
       },
       {
         date: "2022 - 2023",
         title: "Full Stack Developer",
-        subtitle: "Strategic Architect for high-growth startups",
+        subtitle:
+          "Designing and building a complete rental management system end-to-end",
       },
     ];
   },
