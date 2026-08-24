@@ -1,0 +1,152 @@
+---
+import dayRoom from "../assets/room/day-room-v1.png";
+import nightRoom from "../assets/room/night-room-v1.png";
+import frame from "../assets/room/window-frame-v1.png";
+---
+
+<div
+  class="relative aspect-4/5 w-76 touch-none drop-shadow-[0_8px_14px_rgba(0,0,0,0.06)] select-none dark:drop-shadow-[0_8px_14px_rgba(0,0,0,0.28)]"
+  data-peep-window
+  aria-hidden="true"
+>
+  <div
+    class="absolute inset-5 overflow-hidden bg-[#ded9d0] transition-colors duration-500 ease-out motion-reduce:transition-none dark:bg-[#171513]"
+  >
+    <div
+      class="absolute top-[-8%] bottom-[-8%] left-[-70%] w-[240%] will-change-transform"
+      data-peep-room
+    >
+      <img
+        src={nightRoom.src}
+        alt=""
+        class="pointer-events-none absolute inset-0 h-full w-full object-fill opacity-0 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-100"
+        draggable="false"
+      />
+
+      <img
+        src={dayRoom.src}
+        alt=""
+        class="pointer-events-none absolute inset-0 h-full w-full object-fill opacity-100 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-0"
+        draggable="false"
+      />
+    </div>
+  </div>
+
+  <img
+    src={frame.src}
+    alt=""
+    class="pointer-events-none absolute inset-0 z-10 h-full w-full"
+    draggable="false"
+  />
+</div>
+
+<script>
+  const windowElement =
+    document.querySelector<HTMLElement>("[data-peep-window]");
+  const roomElement =
+    windowElement?.querySelector<HTMLElement>("[data-peep-room]") ?? null;
+
+  if (windowElement && roomElement) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const activationPadding = 190;
+    const horizontalTravel = 185;
+    const verticalTravel = 34;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let animationFrame: number | null = null;
+
+    const clamp = (value: number, min: number, max: number): number =>
+      Math.min(max, Math.max(min, value));
+
+    const curveHorizontal = (value: number): number =>
+      Math.sign(value) * Math.abs(value) ** 1.55;
+
+    const update = (): void => {
+      currentX += (targetX - currentX) * 0.11;
+      currentY += (targetY - currentY) * 0.11;
+
+      const roomX = currentX * horizontalTravel;
+      const roomY = currentY * verticalTravel;
+
+      roomElement.style.transform = `translate3d(${roomX}px, ${roomY}px, 0)`;
+
+      const isMoving =
+        Math.abs(targetX - currentX) > 0.002 ||
+        Math.abs(targetY - currentY) > 0.002;
+
+      if (isMoving) {
+        animationFrame = requestAnimationFrame(update);
+        return;
+      }
+
+      animationFrame = null;
+    };
+
+    const startAnimation = (): void => {
+      if (animationFrame !== null) {
+        return;
+      }
+
+      animationFrame = requestAnimationFrame(update);
+    };
+
+    const handlePointerMove = (event: PointerEvent): void => {
+      if (reducedMotion.matches) {
+        return;
+      }
+
+      const rect = windowElement.getBoundingClientRect();
+
+      const activeLeft = rect.left - activationPadding;
+      const activeRight = rect.right + activationPadding;
+      const activeTop = rect.top - activationPadding;
+      const activeBottom = rect.bottom + activationPadding;
+
+      const isInside =
+        event.clientX >= activeLeft &&
+        event.clientX <= activeRight &&
+        event.clientY >= activeTop &&
+        event.clientY <= activeBottom;
+
+      if (!isInside) {
+        targetX = 0;
+        targetY = 0;
+        startAnimation();
+        return;
+      }
+
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const horizontalRange = rect.width / 2 + activationPadding;
+      const verticalRange = rect.height / 2 + activationPadding;
+
+      const pointerX = clamp(
+        (event.clientX - centerX) / horizontalRange,
+        -1,
+        1,
+      );
+
+      const pointerY = clamp((event.clientY - centerY) / verticalRange, -1, 1);
+
+      targetX = curveHorizontal(pointerX);
+      targetY = pointerY * 0.5;
+
+      startAnimation();
+    };
+
+    document.addEventListener("pointermove", handlePointerMove);
+  }
+</script>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    [data-peep-room] {
+      transform: none !important;
+    }
+  }
+</style>

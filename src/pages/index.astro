@@ -1,239 +1,120 @@
 ---
-import Image from "astro/components/Image.astro";
 import Layout from "../layouts/Layout.astro";
-import Link from "../components/Link.astro";
-import { Icon } from "astro-icon/components";
-import { api } from "../api";
 
-const projects = api.getProjects();
-const experience = api.getExperience();
+import PeepWindow from "../components/PeepWindow.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
 <Layout>
-  <main class="font-sans">
-    <section class="grid h-dvh place-content-center space-y-14 px-4 lg:px-10">
-      <div class="font-display max-w-7xl">
-        <h1 class="relative z-20 text-5xl font-bold uppercase lg:text-9xl">
-          Building pragmatic web solutions
-          <span class="text-blue-500">.</span>
-        </h1>
-      </div>
+  <div class="fixed top-6 right-6 z-50 sm:top-8 sm:right-8">
+    <ThemeToggle />
+  </div>
 
-      <div
-        class="flex flex-col gap-y-6 lg:flex-row lg:items-baseline lg:justify-between"
-      >
-        <div class="max-w-2xl text-lg text-neutral-400 lg:text-2xl">
-          <p>Facundo Pellicer - Full Stack Developer.</p>
-          <p>
-            Building scalable systems where code solves real business problems.
+  <main
+    class="mx-auto flex min-h-dvh w-full max-w-7xl items-center px-6 py-6 sm:px-10 sm:py-20 lg:px-16 lg:py-32"
+  >
+    <div
+      class="w-full lg:grid lg:grid-cols-[45ch_19rem] lg:items-center lg:justify-center lg:gap-60"
+    >
+      <div class="max-w-[45ch] text-lg leading-relaxed">
+        <header>
+          <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">
+            I build software that removes work.
+          </h1>
+
+          <p class="mt-1 text-neutral-600 dark:text-neutral-300">
+            Product engineer with a backend and systems bias.
           </p>
-        </div>
+        </header>
 
-        <div class="flex items-center gap-10 font-mono">
-          <div class="space-y-1">
-            <p class="text-xs text-neutral-500 lg:text-sm">FOCUS</p>
-            <p class="text-sm lg:text-base">Full Stack / AI</p>
-          </div>
+        <section class="mt-7">
+          <p>Pragmatic over clever. Product before technology.</p>
 
-          <div class="space-y-1">
-            <p class="text-xs text-neutral-500 lg:text-sm">LOCATION</p>
-            <p class="text-sm lg:text-base">Remote / Global</p>
-          </div>
-        </div>
-      </div>
-    </section>
+          <p class="mt-4 text-base text-neutral-500 dark:text-neutral-400">
+            Mostly <span class="font-medium text-[#3178C6]">
+              TypeScript
+            </span>.<br />
+            Curious by default.
+          </p>
+        </section>
 
-    <div class="flex justify-center bg-neutral-900 py-30 lg:py-40">
-      <p
-        class="font-display mx-auto max-w-5xl px-4 text-center text-xl text-balance lg:px-0 lg:text-left lg:text-4xl"
-      >
-        My job isn't just to write code; it's to understand the underlying
-        problem while keeping the big picture in mind.
-      </p>
-    </div>
-
-    <section
-      class="mx-auto max-w-375 space-y-30 px-4 py-30 lg:space-y-60 lg:px-10 lg:py-40"
-    >
-      {
-        projects.map((project, index) => (
-          <article
-            x-data="{ activeTab: 0 }"
-            class="flex flex-col items-center gap-x-20 lg:flex-row lg:even:flex-row-reverse"
-          >
-            <div class="basis-[40%] space-y-10">
-              <div class="flex items-center gap-4">
-                <div>
-                  <p class="font-mono text-5xl font-bold text-blue-400 lg:text-7xl">
-                    0{index + 1}
-                  </p>
-                </div>
-                <div>
-                  <p class="font-display text-4xl font-bold uppercase lg:text-5xl">
-                    {project.title}
-                  </p>
-                  <p class="text-xl text-neutral-400 lg:text-2xl">
-                    {project.subtitle}
-                  </p>
-                </div>
-              </div>
-
-              <div class="relative z-20 mb-10 grid w-full lg:hidden">
-                {project.images.map((img, imgIndex) => (
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width="1200"
-                    height="800"
-                    class="h-auto w-full rounded-md object-cover transition-opacity duration-300 [grid-area:1/1]"
-                    x-bind:class={`activeTab === ${imgIndex} ? 'opacity-100' : 'opacity-0 pointer-events-none'`}
-                  />
-                ))}
-              </div>
-
-              <div class="space-y-4">
-                <div class="relative z-10 flex flex-col items-center gap-x-4 gap-y-2 pb-4 lg:flex-row">
-                  <button
-                    x-on:click="activeTab = 0"
-                    type="button"
-                    class="flex w-full items-center justify-center gap-2 rounded-lg border border-blue-300 p-2 text-xs font-semibold uppercase transition-colors lg:text-sm"
-                    x-bind:class="activeTab === 0 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
-                  >
-                    <Icon
-                      name="circle-alert"
-                      class="size-6"
-                    />
-                    The Problem
-                  </button>
-                  <button
-                    x-on:click="activeTab = 1"
-                    type="button"
-                    class="flex w-full items-center justify-center gap-2 rounded-lg border border-blue-300 p-2 text-xs font-semibold uppercase transition-colors lg:text-sm"
-                    x-bind:class="activeTab === 1 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
-                  >
-                    <Icon
-                      name="lightbulb"
-                      class="size-6"
-                    />
-                    The Solution
-                  </button>
-                  <button
-                    x-on:click="activeTab = 2"
-                    type="button"
-                    class="flex w-full items-center justify-center gap-2 rounded-lg border border-blue-300 p-2 text-xs font-semibold uppercase transition-colors lg:text-sm"
-                    x-bind:class="activeTab === 2 ? 'bg-blue-300 text-black' : 'hover:bg-blue-300/10'"
-                  >
-                    <Icon
-                      name="trending-up"
-                      class="size-6"
-                    />
-                    The Impact
-                  </button>
-                </div>
-
-                <div class="grid">
-                  {project.description.map((p, pIndex) => (
-                    <p
-                      class="text-lg text-pretty transition-opacity duration-300 [grid-area:1/1]"
-                      x-bind:class={`activeTab === ${pIndex} ? 'opacity-100' : 'opacity-0 pointer-events-none'`}
-                    >
-                      {p}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div class="relative z-20 hidden basis-[60%] lg:grid">
-              {project.images.map((img, imgIndex) => (
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width="1600"
-                  height="1000"
-                  class="h-auto w-full rounded-md object-cover transition-opacity duration-300 [grid-area:1/1]"
-                  x-bind:class={`activeTab === ${imgIndex} ? 'opacity-100' : 'opacity-0 pointer-events-none'`}
-                />
-              ))}
-
-              {/* <div class="pt-6">
-                <ul class="flex flex-wrap items-center gap-2 lg:gap-4">
-                  {project.stack.map((tech) => (
-                    <li class="rounded-3xl bg-neutral-600 px-4 py-1 text-xs uppercase">
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
-            </div>
-          </article>
-        ))
-      }
-    </section>
-
-    <section
-      class="mx-auto grid max-w-7xl items-center justify-between gap-y-30 px-4 py-30 lg:grid-cols-2 lg:px-10 lg:py-40"
-    >
-      <div class="space-y-14">
-        {
-          experience.map((exp) => (
-            <div class="space-y-3 border-l border-neutral-700 pl-10">
-              <p class="text-sm font-thin text-neutral-500 lg:text-base">
-                {exp.date}
-              </p>
-              <div class="space-y-1">
-                <p class="text-xl font-bold lg:text-2xl">{exp.title}</p>
-                <p class="text-base text-neutral-400 lg:text-lg">
-                  {exp.subtitle}
-                </p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-      <div>
-        <p class="text-2xl leading-8 text-pretty lg:text-4xl lg:leading-11">
-          I am driven by a <span class="text-blue-400">passion</span> for constant
-          growth and <span class="text-blue-400">learning</span>. My background
-          in sports instilled a <span class="text-blue-400">competitive</span> spirit
-          that pushes me to improve every day. I also have a sharp eye for <span
-            class="text-blue-400"
-          >
-            details
-          </span>. I believe sometimes the distinction between a good product
-          and a great one often relies on the small things.
-        </p>
-        <p></p>
-      </div>
-    </section>
-
-    <section class="space-y-14 px-4 py-30 lg:space-y-20 lg:px-10 lg:py-40">
-      <div class="flex justify-center">
-        <p class="text-sm tracking-widest text-neutral-400 lg:text-xl">
-          GET IN TOUCH
-        </p>
-      </div>
-
-      <div
-        class="flex justify-center text-xl font-bold underline underline-offset-8 lg:text-6xl"
-      >
-        <Link
-          class="relative z-20"
-          href="mailto:facundopellicer4@gmail.com"
+        <nav
+          class="mt-8 flex flex-col items-start gap-1.5 text-base"
+          aria-label="Projects"
         >
-          facundopellicer4@gmail.com
-        </Link>
+          <a
+            class="group inline-flex items-baseline gap-2"
+            href="https://github.com/Facupelli/depiqo"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span
+              class="text-neutral-400 transition-transform duration-200 group-hover:translate-x-px group-hover:-translate-y-px dark:text-neutral-500"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+            <span class="underline-offset-4 group-hover:underline">DEPIQO</span>
+          </a>
+
+          <a
+            class="group inline-flex items-baseline gap-2"
+            href="https://github.com/Facupelli/divide-expenses-bot"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span
+              class="text-neutral-400 transition-transform duration-200 group-hover:translate-x-px group-hover:-translate-y-px dark:text-neutral-500"
+              aria-hidden="true"
+            >
+              ↗
+            </span>
+            <span class="underline-offset-4 group-hover:underline">
+              DIVIDE EXPENSES
+            </span>
+          </a>
+        </nav>
+
+        <section class="mt-8">
+          <h2 class="text-sm text-neutral-500 dark:text-neutral-400">Lately</h2>
+
+          <p class="mt-1">
+            Computer networks, AI agents, homebrewing, and whatever makes me
+            want to know how it actually works.
+          </p>
+        </section>
+
+        <footer class="mt-8 text-base text-neutral-500 dark:text-neutral-400">
+          <p>San Juan, Argentina</p>
+
+          <nav
+            class="mt-1 flex items-center gap-x-1.5"
+            aria-label="Social links"
+          >
+            <a
+              class="underline-offset-4 transition-all duration-200 hover:underline"
+              href="https://github.com/Facupelli"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub,
+            </a>
+
+            <a
+              class="underline-offset-4 transition-all duration-200 hover:underline"
+              href="https://www.linkedin.com/in/facundopellicer"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+          </nav>
+        </footer>
       </div>
 
-      <div
-        class="relative z-10 flex items-center justify-center gap-14 pt-8 text-base lg:text-2xl"
-      >
-        <Link href="https://www.linkedin.com/in/facundopellicer/">
-          LINKEDIN
-        </Link>
-        <Link href="https://github.com/Facupelli"> GITHUB </Link>
-        <Link href="https://x.com/Pelliscame"> X </Link>
+      <div class="hidden lg:flex lg:justify-center">
+        <PeepWindow />
       </div>
-    </section>
+    </div>
   </main>
 </Layout>

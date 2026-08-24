@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="304"
+  height="380"
+  viewBox="0 0 304 380"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="horizontalWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9B765A"/>
+      <stop offset="0.5" stop-color="#866247"/>
+      <stop offset="1" stop-color="#74533D"/>
+    </linearGradient>
+
+    <linearGradient id="verticalWood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9B765A"/>
+      <stop offset="0.5" stop-color="#866247"/>
+      <stop offset="1" stop-color="#74533D"/>
+    </linearGradient>
+
+    <linearGradient id="innerHighlight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E4C6A7" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#E4C6A7" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="softDepth" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow
+        dx="0"
+        dy="1"
+        stdDeviation="0.8"
+        flood-color="#3D291D"
+        flood-opacity="0.28"
+      />
+    </filter>
+  </defs>
+
+  <!-- Four outer rails. The center remains transparent. -->
+  <path d="M0 0H304V20H0Z" fill="url(#horizontalWood)"/>
+  <path d="M0 356H304V380H0Z" fill="url(#horizontalWood)"/>
+  <path d="M0 20H20V356H0Z" fill="url(#verticalWood)"/>
+  <path d="M284 20H304V356H284Z" fill="url(#verticalWood)"/>
+
+  <!-- Soft architectural bevels. -->
+  <path d="M20 20H284V22H20Z" fill="#D6B393" fill-opacity="0.38"/>
+  <path d="M20 354H284V356H20Z" fill="#51392A" fill-opacity="0.38"/>
+  <path d="M20 20H22V356H20Z" fill="#D6B393" fill-opacity="0.28"/>
+  <path d="M282 20H284V356H282Z" fill="#51392A" fill-opacity="0.34"/>
+
+  <!-- Central muntins. -->
+  <g filter="url(#softDepth)">
+    <rect x="149" y="20" width="6" height="336" fill="url(#verticalWood)"/>
+    <rect x="20" y="187" width="264" height="6" fill="url(#horizontalWood)"/>
+  </g>
+
+  <!-- Restrained highlights so the SVG matches the illustrated room. -->
+  <rect x="149" y="20" width="1" height="336" fill="#D8B696" fill-opacity="0.34"/>
+  <rect x="20" y="187" width="264" height="1" fill="#D8B696" fill-opacity="0.32"/>
+
+  <!-- Very subtle glass sheen over the transparent aperture. -->
+  <path
+    d="M27 28C55 37 77 66 91 102C111 155 137 200 177 244C199 268 218 296 229 326H194C182 300 166 278 147 256C109 212 82 166 64 119C51 84 39 58 24 44L27 28Z"
+    fill="url(#innerHighlight)"
+    opacity="0.34"
+  />
+</svg>

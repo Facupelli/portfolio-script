@@ -1,58 +1,69 @@
 ---
+import { Font } from "astro:assets";
 import "../styles/global.css";
-import "@fontsource/inter";
-import "@fontsource/ibm-plex-mono";
-import "@fontsource-variable/space-grotesk";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Facundo Pellicer",
+  description = "Product engineer with a backend and systems bias.",
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html
+  lang="en"
+  class="scheme-light dark:scheme-dark"
+>
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width"
     />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
-    />
-    <link
-      rel="icon"
-      href="/favicon.ico"
-    />
     <meta
-      name="generator"
-      content={Astro.generator}
+      name="description"
+      content={description}
     />
-    <title>Facundo Pellicer</title>
+    <title>{title}</title>
 
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
-    ></script>
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        let storedTheme = null;
+
+        try {
+          storedTheme = localStorage.getItem("theme");
+        } catch {}
+
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        const theme =
+          storedTheme === "light" || storedTheme === "dark"
+            ? storedTheme
+            : systemPrefersDark
+              ? "dark"
+              : "light";
+
+        root.classList.toggle("dark", theme === "dark");
+        root.dataset.theme = theme;
+      })();
+    </script>
+
+    <Font
+      cssVariable="--font-instrument-sans"
+      preload
+    />
   </head>
 
-  <body class="relative bg-[rgb(15,15,15)] text-white">
-    <div
-      class="absolute top-0 left-0 z-0 h-full w-full overflow-hidden opacity-80"
-    >
-      <div class="noise"></div>
-    </div>
-
+  <body
+    class="min-h-dvh bg-[#fafafa] font-sans text-[#11110f] antialiased transition-colors duration-380 ease-out motion-reduce:transition-none dark:bg-[#0d0f10] dark:text-[#f1eee8]"
+  >
     <slot />
   </body>
 </html>
-
-<style>
-  .noise {
-    position: absolute;
-    background: url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png");
-    opacity: 0.03;
-    inset: -200%;
-    width: 400%;
-    height: 400%;
-    filter: contrast(100);
-  }
-</style>
