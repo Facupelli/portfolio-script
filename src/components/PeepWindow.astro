@@ -1,7 +1,8 @@
 ---
 import dayRoom from "../assets/room/day-room-v1.png";
 import nightRoom from "../assets/room/night-room-v1.png";
-import frame from "../assets/room/window-frame-v1.png";
+import dayFrame from "../assets/room/window-frame-day-v1.png";
+import nightFrame from "../assets/room/window-frame-night-v1.png";
 ---
 
 <div
@@ -33,9 +34,16 @@ import frame from "../assets/room/window-frame-v1.png";
   </div>
 
   <img
-    src={frame.src}
+    src={nightFrame.src}
     alt=""
-    class="pointer-events-none absolute inset-0 z-10 h-full w-full"
+    class="pointer-events-none absolute inset-0 z-10 h-full w-full opacity-0 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-100"
+    draggable="false"
+  />
+
+  <img
+    src={dayFrame.src}
+    alt=""
+    class="pointer-events-none absolute inset-0 z-10 h-full w-full opacity-100 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-0"
     draggable="false"
   />
 </div>
