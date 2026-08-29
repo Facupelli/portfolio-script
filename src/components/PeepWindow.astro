@@ -1,4 +1,6 @@
 ---
+import { Picture } from "astro:assets";
+
 import dayRoom from "../assets/room/day-room-v1.png";
 import nightRoom from "../assets/room/night-room-v1.png";
 import dayFrame from "../assets/room/window-frame-day-v1.png";
@@ -17,34 +19,58 @@ import nightFrame from "../assets/room/window-frame-night-v1.png";
       class="absolute top-[-8%] bottom-[-8%] left-[-70%] w-[240%] will-change-transform"
       data-peep-room
     >
-      <img
-        src={nightRoom.src}
+      <Picture
+        src={nightRoom}
+        formats={["avif", "webp"]}
+        width={634}
+        densities={[1, 2]}
+        quality="high"
         alt=""
+        loading="eager"
+        decoding="async"
+        fetchpriority="auto"
         class="pointer-events-none absolute inset-0 h-full w-full object-fill opacity-0 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-100"
-        draggable="false"
       />
 
-      <img
-        src={dayRoom.src}
+      <Picture
+        src={dayRoom}
+        formats={["avif", "webp"]}
+        width={634}
+        densities={[1, 2]}
+        quality="high"
         alt=""
+        loading="eager"
+        decoding="async"
+        fetchpriority="auto"
         class="pointer-events-none absolute inset-0 h-full w-full object-fill opacity-100 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-0"
-        draggable="false"
       />
     </div>
   </div>
 
-  <img
-    src={nightFrame.src}
+  <Picture
+    src={nightFrame}
+    formats={["avif", "webp"]}
+    width={304}
+    densities={[1, 2]}
+    quality="high"
     alt=""
+    loading="eager"
+    decoding="async"
+    fetchpriority="auto"
     class="pointer-events-none absolute inset-0 z-10 h-full w-full opacity-0 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-100"
-    draggable="false"
   />
 
-  <img
-    src={dayFrame.src}
+  <Picture
+    src={dayFrame}
+    formats={["avif", "webp"]}
+    width={304}
+    densities={[1, 2]}
+    quality="high"
     alt=""
+    loading="eager"
+    decoding="async"
+    fetchpriority="auto"
     class="pointer-events-none absolute inset-0 z-10 h-full w-full opacity-100 transition-opacity delay-75 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity] motion-reduce:transition-none dark:opacity-0"
-    draggable="false"
   />
 </div>
 
