@@ -5,3 +5,44 @@
 @theme inline {
   --font-sans: var(--font-instrument-sans);
 }
+
+:root {
+  color-scheme: light;
+  --page-bg: #f4f0e9;
+  --color-text: #272521;
+  --color-body: #4b4741;
+  --color-muted: #746e66;
+  --color-faint: #948b80;
+  --color-line: rgba(35, 32, 27, 0.16);
+  --color-accent: #316b98;
+  --window-shadow: rgba(45, 36, 28, 0.15);
+}
+
+:root.dark {
+  color-scheme: dark;
+  --page-bg: #1c1b19;
+  --color-text: #f1eee8;
+  --color-body: #d4cec6;
+  --color-muted: #aaa69f;
+  --color-faint: #817f7a;
+  --color-line: rgba(241, 238, 232, 0.12);
+  --color-accent: #a1c6e8;
+  --window-shadow: rgba(0, 0, 0, 0.25);
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--color-text);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+::selection {
+  color: var(--page-bg);
+  background-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}

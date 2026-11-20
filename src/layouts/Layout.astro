@@ -8,43 +8,28 @@ interface Props {
 }
 
 const {
-  title = "Facundo Pellicer",
-  description = "Product engineer with a backend and systems bias.",
+  title = "Facundo Pellicer — Web software",
+  description =
+    "I build web software, from the database to the browser. A few things I've built and a little about how I work.",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html
-  lang="en"
-  class="scheme-light dark:scheme-dark"
->
+<html lang="en" class="scheme-light dark:scheme-dark">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width"
-    />
-    <meta
-      name="description"
-      content={description}
-    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
     <title>{title}</title>
 
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
-    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       rel="icon"
       type="image/png"
       sizes="96x96"
       href="/favicon-96x96.png"
     />
-    <link
-      rel="shortcut icon"
-      href="/favicon.ico"
-    />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -76,15 +61,10 @@ const {
       })();
     </script>
 
-    <Font
-      cssVariable="--font-instrument-sans"
-      preload
-    />
+    <Font cssVariable="--font-instrument-sans" preload />
   </head>
 
-  <body
-    class="min-h-dvh bg-[#fafafa] font-sans text-[#11110f] antialiased transition-colors duration-380 ease-out motion-reduce:transition-none dark:bg-[#0d0f10] dark:text-[#f1eee8]"
-  >
+  <body class="min-h-dvh font-sans antialiased">
     <slot />
   </body>
 </html>

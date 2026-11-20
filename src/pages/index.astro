@@ -1,172 +1,403 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 import PeepWindow from "../components/PeepWindow.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+
+const projects = [
+  {
+    name: "DEPIQO",
+    description: "Rental management for equipment businesses.",
+    href: "https://github.com/Facupelli/depiqo",
+  },
+  {
+    name: "DIVIDE EXPENSES",
+    description: "Split expenses using natural language.",
+    href: "https://github.com/Facupelli/divide-expenses-bot",
+  },
+  {
+    name: "QUE VES",
+    description: "Discover movies through people whose taste you trust.",
+    href: "https://github.com/Facupelli/Social-Movies-Club",
+  },
+];
 ---
 
 <Layout>
-  <div class="fixed top-4 right-4 z-50 sm:top-8 sm:right-8">
-    <ThemeToggle />
-  </div>
+  <div class="site-shell">
+    <div class="topbar">
+      <ThemeToggle />
+    </div>
 
-  <main
-    class="mx-auto flex min-h-dvh w-full max-w-7xl items-center px-6 py-6 sm:px-10 sm:py-20 lg:px-16 lg:py-32"
-  >
-    <div
-      class="w-full lg:grid lg:grid-cols-[45ch_19rem] lg:items-center lg:justify-center lg:gap-60"
-    >
-      <div class="text-base leading-relaxed sm:text-lg">
-        <header>
-          <h1 class="text-2xl font-medium tracking-tight sm:text-4xl">
-            I build software that removes work.
-          </h1>
+    <main class="portfolio-layout">
+      <section
+        class="intro"
+        aria-labelledby="headline"
+      >
+        <h1 id="headline">
+          I build web software, from the database to the browser.
+        </h1>
 
-          <p class="mt-1 text-neutral-600 dark:text-neutral-300">
-            Software engineer, product mindset, backend bias.
-          </p>
-        </header>
+        <p>
+          I enjoy getting into the details, understanding why things work the
+          way they do, and finding ways to make them simpler.
+        </p>
 
-        <section class="mt-7">
-          <p>Pragmatic over clever. Product before technology.</p>
+        <p>
+          I mostly work with TypeScript, but I'm not tied to any language or
+          framework. I'm happy to learn what I need to solve the problem.
+        </p>
+      </section>
 
-          <p
-            class="mt-4 text-sm text-neutral-500 sm:text-base dark:text-neutral-400"
-          >
-            Mostly <span class="font-medium text-[#3178C6]">
-              TypeScript
-            </span>.<br />
-            Curious by default.
-          </p>
-        </section>
-
-        <nav
-          class="mt-8 flex flex-col items-start gap-4 text-sm sm:text-base"
-          aria-label="Projects"
-        >
-          <div>
-            <a
-              class="group inline-flex items-baseline gap-2"
-              href="https://github.com/Facupelli/depiqo"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span
-                class="text-neutral-400 transition-transform duration-200 group-hover:translate-x-px group-hover:-translate-y-px dark:text-neutral-500"
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-
-              <span class="underline-offset-4 group-hover:underline">
-                DEPIQO
-              </span>
-            </a>
-
-            <p
-              class="mt-0.5 pl-5 text-xs text-neutral-500 sm:text-sm dark:text-neutral-400"
-            >
-              Rental management SaaS for inventory, pricing and bookings.
-            </p>
-          </div>
-
-          <div>
-            <a
-              class="group inline-flex items-baseline gap-2"
-              href="https://github.com/Facupelli/divide-expenses-bot"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span
-                class="text-neutral-400 transition-transform duration-200 group-hover:translate-x-px group-hover:-translate-y-px dark:text-neutral-500"
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-
-              <span class="underline-offset-4 group-hover:underline">
-                DIVIDE EXPENSES
-              </span>
-            </a>
-
-            <p
-              class="mt-0.5 pl-5 text-xs text-neutral-500 sm:text-sm dark:text-neutral-400"
-            >
-              AI-powered expense splitting from natural language.
-            </p>
-          </div>
-
-          <div>
-            <a
-              class="group inline-flex items-baseline gap-2"
-              href="https://github.com/Facupelli/Social-Movies-Club"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span
-                class="text-neutral-400 transition-transform duration-200 group-hover:translate-x-px group-hover:-translate-y-px dark:text-neutral-500"
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-
-              <span class="underline-offset-4 group-hover:underline">
-                QUE VES
-              </span>
-            </a>
-
-            <p
-              class="mt-0.5 pl-5 text-xs text-neutral-500 sm:text-sm dark:text-neutral-400"
-            >
-              Social movie discovery and recommendations PWA.
-            </p>
-          </div>
-        </nav>
-
-        <section class="mt-8">
-          <h2 class="text-xs text-neutral-500 sm:text-sm dark:text-neutral-400">
-            Lately
-          </h2>
-
-          <p class="mt-1">
-            Computer networks, AI agents, homebrewing, and whatever makes me
-            want to know how it actually works.
-          </p>
-        </section>
-
-        <footer
-          class="mt-8 text-sm text-neutral-500 sm:text-base dark:text-neutral-400"
-        >
-          <p>San Juan, Argentina</p>
-
-          <nav
-            class="mt-1 flex items-center gap-x-1.5"
-            aria-label="Social links"
-          >
-            <a
-              class="underline-offset-4 transition-all duration-200 hover:underline"
-              href="https://github.com/Facupelli"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub,
-            </a>
-
-            <a
-              class="underline-offset-4 transition-all duration-200 hover:underline"
-              href="https://www.linkedin.com/in/facundopellicer"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-          </nav>
-        </footer>
-      </div>
-
-      <div class="hidden lg:flex lg:justify-center">
+      <div
+        class="illustration"
+        aria-label="Window into my workspace"
+      >
         <PeepWindow />
       </div>
-    </div>
-  </main>
+
+      <section
+        class="projects"
+        aria-labelledby="projects-heading"
+      >
+        <h2 id="projects-heading">A few things I've built</h2>
+
+        <nav aria-label="Selected projects">
+          <ul class="project-list">
+            {
+              projects.map((project) => (
+                <li class="project-item">
+                  <a
+                    class="project-link"
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span class="project-name">{project.name}</span>
+                    <span class="project-description">
+                      {project.description}
+                    </span>
+                    <span
+                      class="project-arrow"
+                      aria-hidden="true"
+                    >
+                      ↗
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </section>
+
+      <p class="recent">
+        Lately, I've been reading about computer networks, experimenting with AI
+        agents, and trying my hand at homebrewing.
+      </p>
+
+      <footer class="footer">
+        <span>San Juan, Argentina</span>
+        <nav
+          class="social-links"
+          aria-label="Social profiles"
+        >
+          <a
+            href="https://github.com/Facupelli"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/facundopellicer"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </footer>
+    </main>
+  </div>
 </Layout>
+
+<style>
+  .site-shell {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100svh;
+    margin: 0 auto;
+    padding: 0 50px;
+  }
+
+  .topbar {
+    height: 88px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--color-muted);
+  }
+
+  .portfolio-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 620px) minmax(250px, 1fr);
+    column-gap: clamp(44px, 6vw, 95px);
+    align-items: start;
+    padding-top: clamp(40px, 6.6vh, 84px);
+    padding-bottom: 85px;
+  }
+
+  .intro {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  h1 {
+    max-width: 660px;
+    margin: 0 0 31px;
+    color: var(--color-text);
+    font-size: 43px;
+    font-weight: 560;
+    line-height: 1.15;
+    letter-spacing: -0.046em;
+    text-wrap: pretty;
+  }
+
+  .intro p {
+    max-width: 595px;
+    margin: 0 0 17px;
+    color: var(--color-body);
+    font-size: 16px;
+    line-height: 1.66;
+    letter-spacing: -0.005em;
+  }
+
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  .illustration {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    align-self: center;
+    justify-self: center;
+    width: min(100%, 335px);
+    filter: brightness(1.09) drop-shadow(0 17px 18px var(--window-shadow));
+  }
+
+  /* Keep the existing PeepWindow component, including any interactions it has. */
+  .illustration > :global(*) {
+    max-width: 100%;
+  }
+
+  .projects {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 44px;
+  }
+
+  .projects h2 {
+    margin: 0 0 17px;
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 520;
+    line-height: 1.66;
+    letter-spacing: -0.008em;
+  }
+
+  .project-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-item:not(:last-child) {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .project-link {
+    display: grid;
+    grid-template-columns: 164px minmax(0, 1fr) 16px;
+    gap: 18px;
+    align-items: baseline;
+    padding: 12px 0 13px;
+    border-radius: 2px;
+    text-decoration: none;
+    text-underline-offset: 4px;
+  }
+
+  .project-name {
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 550;
+    line-height: 1.4;
+    letter-spacing: 0.004em;
+  }
+
+  .project-description {
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .project-arrow {
+    color: var(--color-faint);
+    font-size: 15px;
+    line-height: 1;
+    transition:
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .project-link:hover .project-name {
+    text-decoration: underline;
+  }
+
+  .project-link:hover .project-arrow,
+  .project-link:focus-visible .project-arrow {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+  }
+
+  .project-link:focus-visible,
+  .social-links a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  .recent {
+    grid-column: 1;
+    grid-row: 3;
+    max-width: 615px;
+    margin: 33px 0 0;
+    color: var(--color-body);
+    font-size: 16px;
+    line-height: 1.66;
+  }
+
+  .footer {
+    grid-column: 1;
+    grid-row: 4;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 11px 30px;
+    margin-top: 42px;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.66;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  .social-links a {
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    transition: color 180ms ease;
+  }
+
+  .social-links a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 920px) {
+    .site-shell {
+      padding: 0 32px;
+    }
+
+    .portfolio-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(200px, 32%);
+      column-gap: 45px;
+      padding-top: 40px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 4.4vw, 43px);
+    }
+
+    .project-link {
+      grid-template-columns: 135px minmax(0, 1fr) 12px;
+      gap: 11px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .site-shell {
+      padding: 0 25px;
+    }
+
+    .topbar {
+      height: 75px;
+    }
+
+    .portfolio-layout {
+      grid-template-columns: minmax(0, 1fr);
+      padding-top: 33px;
+      padding-bottom: 75px;
+      row-gap: 0;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: clamp(33px, 7.3vw, 43px);
+      line-height: 1.17;
+    }
+
+    .illustration {
+      grid-column: 1;
+      grid-row: 2;
+      width: min(65%, 230px);
+      margin: 30px auto 6px;
+    }
+
+    .projects {
+      grid-column: 1;
+      grid-row: 3;
+      margin-top: 35px;
+    }
+
+    .project-link {
+      grid-template-columns: minmax(0, 1fr) 15px;
+      gap: 3px 12px;
+      padding: 12px 0;
+    }
+
+    .project-name {
+      grid-column: 1;
+    }
+
+    .project-description {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .project-arrow {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .recent {
+      grid-column: 1;
+      grid-row: 4;
+      margin-top: 29px;
+    }
+
+    .footer {
+      grid-column: 1;
+      grid-row: 5;
+      margin-top: 35px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-arrow,
+    .social-links a {
+      transition: none;
+    }
+  }
+</style>

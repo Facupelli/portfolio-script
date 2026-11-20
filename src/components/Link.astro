@@ -9,6 +9,6 @@ const { class: className, href } = Astro.props;
 const defaultClass = "cursor-pointer";
 ---
 
-<a class:list={[defaultClass, className]} href={href} target="_blank">
+<a class:list={[defaultClass, className]} href={href} target="_blank" rel="noopener noreferrer">
   <slot />
 </a>
