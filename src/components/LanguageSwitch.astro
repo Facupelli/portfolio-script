@@ -1,0 +1,63 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { locales, type Locale } from "../i18n/translations";
+
+interface Props {
+  locale: Locale;
+  label: string;
+}
+
+const { locale, label } = Astro.props;
+const names = { en: "English", es: "Español" } satisfies Record<Locale, string>;
+---
+
+<nav aria-label={label}>
+  {
+    locales.map((language, index) => (
+      <>
+        {index > 0 && <span aria-hidden="true">/</span>}
+        <a
+          href={getRelativeLocaleUrl(language)}
+          lang={language}
+          hreflang={language}
+          aria-label={names[language]}
+          aria-current={language === locale ? "page" : undefined}
+        >
+          {language.toUpperCase()}
+        </a>
+      </>
+    ))
+  }
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  a {
+    display: grid;
+    min-width: 28px;
+    min-height: 32px;
+    place-items: center;
+    border-radius: 2px;
+    text-decoration: none;
+    text-underline-offset: 4px;
+  }
+
+  a[aria-current="page"] {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-accent);
+  }
+</style>
